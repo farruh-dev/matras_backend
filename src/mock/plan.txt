@@ -1,0 +1,37 @@
+Users
+    -Admin
+        username,
+        password
+
+Categories
+    name
+
+Products
+    name,
+    category_id,
+    price,
+    weight,
+    size,
+    is_available
+
+Customers
+    index,
+    phone_number,
+    status
+
+Orders
+    index,
+    customer_name,
+    customer_phone_number,
+    product_id,
+    amount
+
+Technologies
+    name,
+    text,
+    video_url
+
+Locations
+    name,
+    text,
+    url
