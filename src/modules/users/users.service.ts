@@ -12,11 +12,11 @@ export class UsersService {
     }
     
     async findAll(): Promise<Users[]>{
-        return await this.userRepository.find()
+        return this.userRepository.find()
     }
 
     async create(user: UserCreateDTO): Promise<Users> {
-        let new_user = await this.userRepository.create(user)
+        let new_user = this.userRepository.create(user)
         return this.userRepository.save(new_user)
     }
 }

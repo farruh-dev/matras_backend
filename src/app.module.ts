@@ -5,10 +5,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { join } from 'path';
 import { UsersModule } from './modules/users/users.module';
+import { CategoriesModule } from './modules/categories/categories.module';
 
 @Module({
   imports: [
-    UsersModule,
     ConfigModule.forRoot({isGlobal: true}),
     GraphQLModule.forRoot(
       {
@@ -27,7 +27,9 @@ import { UsersModule } from './modules/users/users.module';
         entities: ["dist/**/*.entity{.ts,.js}"],
         synchronize: true
       }
-    )
+    ),
+    UsersModule,
+    CategoriesModule
   ],
   controllers: [],
   providers: [],
