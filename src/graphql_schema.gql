@@ -15,15 +15,39 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 """
 scalar DateTime
 
+type Categories {
+  id: String!
+  name: String!
+  parent_id: String
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
 type Query {
   getAllUsers: [Users!]!
+  getAllCategories: [Categories!]!
+  getOneCategory(id: String!): Categories!
 }
 
 type Mutation {
   createUser(user: UserCreateDTO!): Users!
+  createCategory(category: CreateCategoryInput!): Categories!
+  updateCategory(updateCategoryInput: UpdateCategoryInput!): Categories!
+  removeCategory(id: String!): Categories!
 }
 
 input UserCreateDTO {
   username: String!
   password: String!
+}
+
+input CreateCategoryInput {
+  name: String!
+  parent_id: String
+}
+
+input UpdateCategoryInput {
+  id: String!
+  name: String!
+  parent_id: String
 }

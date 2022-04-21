@@ -23,8 +23,8 @@ export class CategoriesService {
     return this.categoryRepository.findOne(id);
   }
 
-  update(id: number, updateCategoryInput: UpdateCategoryInput) {
-    // return this.categoryRepository.update(id, updateCategoryInput);
+  update(id: string, category: UpdateCategoryInput) {
+    return this.categoryRepository.update(id, category);
   }
 
   remove(id: string) {

@@ -13,7 +13,7 @@ export class Categories {
   name: string;
 
   @Field({nullable: true})
-  @Column()
+  @Column({nullable: true})
   parent_id: string;
 
   @Field()
