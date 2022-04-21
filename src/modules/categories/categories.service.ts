@@ -16,11 +16,15 @@ export class CategoriesService {
   }
 
   findAll(): Promise<Categories[]>{
-    return this.categoryRepository.find();
+    return this.categoryRepository.find({
+      relations: ["products"]
+    });
   }
 
   findOne(id: string): Promise<Categories>{
-    return this.categoryRepository.findOne(id);
+    return this.categoryRepository.findOne(id, {
+      relations: ["products"]
+    });
   }
 
   update(id: string, category: UpdateCategoryInput) {
