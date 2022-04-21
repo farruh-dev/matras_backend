@@ -4,7 +4,8 @@ Users
         password
 
 Categories
-    name
+    name,
+    parent_id
 
 Products
     name,

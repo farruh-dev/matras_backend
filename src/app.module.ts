@@ -6,6 +6,7 @@ import { ConfigModule } from '@nestjs/config';
 import { join } from 'path';
 import { UsersModule } from './modules/users/users.module';
 import { CategoriesModule } from './modules/categories/categories.module';
+import { ProductsModule } from './modules/products/products.module';
 
 @Module({
   imports: [
@@ -29,7 +30,8 @@ import { CategoriesModule } from './modules/categories/categories.module';
       }
     ),
     UsersModule,
-    CategoriesModule
+    CategoriesModule,
+    ProductsModule
   ],
   controllers: [],
   providers: [],

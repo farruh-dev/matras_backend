@@ -13,22 +13,22 @@ export class CategoriesResolver {
     return this.categoriesService.create(createCategoryInput);
   }
 
-  @Query(() => [Categories], { name: 'getAllCategories' })
+  @Query(() => [Categories], { name: 'getCategories' })
   findAll() {
     return this.categoriesService.findAll();
   }
 
-  @Query(() => Categories, { name: 'getOneCategory' })
+  @Query(() => Categories, { name: 'getCategory' })
   findOne(@Args('id') id: string) {
     return this.categoriesService.findOne(id);
   }
 
-  @Mutation(() => Categories)
+  @Mutation(() => Categories, {name: "updateCategory"})
   updateCategory(@Args('updateCategoryInput') updateCategoryInput: UpdateCategoryInput) {
     return this.categoriesService.update(updateCategoryInput.id, updateCategoryInput);
   }
 
-  @Mutation(() => Categories)
+  @Mutation(() => Categories, {name: "deleteCategory"})
   removeCategory(@Args('id') id: string) {
     return this.categoriesService.remove(id);
   }
