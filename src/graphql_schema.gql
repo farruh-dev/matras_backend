@@ -38,6 +38,13 @@ type Categories {
   products: [Products!]
 }
 
+type Customers {
+  id: String!
+  index: Int!
+  phone_number: String!
+  status: Boolean!
+}
+
 type Query {
   getAllUsers: [Users!]!
   getCategories: [Categories!]!
@@ -45,6 +52,8 @@ type Query {
   getProducts: [Products!]!
   getProduct(id: String!): Products!
   getFiles: [Files!]!
+  getCustomers: [Customers!]!
+  getCustomer(id: String!): Customers!
 }
 
 type Mutation {
@@ -59,6 +68,9 @@ type Mutation {
   getFile(file: CreateFileInput!): Files!
   deleteFile(id: String!): Files!
   deleteFileByProduct(product_id: String!): Files!
+  createCustomer(customer: CreateCustomerInput!): Customers!
+  updateCustomer(customer: UpdateCustomerInput!): Customers!
+  deleteCustomer(id: String!): Customers!
 }
 
 input UserCreateDTO {
@@ -102,4 +114,16 @@ scalar Upload
 input CreateFileInput {
   """Example field (placeholder)"""
   exampleField: Int!
+}
+
+input CreateCustomerInput {
+  index: Int!
+  phone_number: String!
+}
+
+input UpdateCustomerInput {
+  index: Int
+  phone_number: String
+  id: String!
+  status: Boolean
 }
