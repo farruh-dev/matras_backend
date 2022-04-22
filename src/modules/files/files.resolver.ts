@@ -10,7 +10,7 @@ import { CreateFileInput } from './dto/create-file.input';
 export class FilesResolver {
   constructor(private readonly filesService: FilesService) {}
 
-  @Mutation(() => Boolean)
+  @Mutation(() => Boolean, {name: "uploadFile"})
   async uploadFile(
     @Args({name: 'file', type: () => GraphQLUpload})
     {
@@ -26,18 +26,23 @@ export class FilesResolver {
     )
   }
 
-  @Query(() => [Files], { name: 'files' })
+  @Query(() => [Files], { name: 'getFiles'})
   findAll() {
     return this.filesService.findAll();
   }
 
-  @Mutation(() => Files)
+  @Mutation(() => Files, {name: "getFile"})
   createFile(@Args("file") createFileInput: CreateFileInput) {
     return this.filesService.create(createFileInput)
   }
 
-  @Mutation(() => Files)
+  @Mutation(() => Files, {name: "deleteFile"})
   removeFile(@Args('id') id: string) {
     return this.filesService.remove(id);
+  }
+
+  @Mutation(() => Files, {name: "deleteFileByProduct"})
+  removeFileByProduct(@Args("product_id") id: string){
+    return this.filesService.removeByParent(id)
   }
 }

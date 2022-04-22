@@ -8,6 +8,17 @@ type Users {
   password: String!
 }
 
+type Files {
+  id: String!
+  name: String!
+  src: String!
+  size: Int!
+  ext: String!
+  mimetype: String!
+  product_id: String!
+  product: Products!
+}
+
 type Products {
   id: String!
   name: String!
@@ -15,8 +26,9 @@ type Products {
   weight: Int!
   size: String!
   is_available: Boolean!
-  category: Categories!
   category_id: String!
+  category: Categories!
+  images: [Files!]
 }
 
 type Categories {
@@ -26,22 +38,13 @@ type Categories {
   products: [Products!]
 }
 
-type Files {
-  id: String!
-  name: String!
-  src: String!
-  size: Int!
-  ext: String!
-  mimetype: String!
-}
-
 type Query {
   getAllUsers: [Users!]!
   getCategories: [Categories!]!
   getCategory(id: String!): Categories!
-  getAllProducts: [Products!]!
-  getOneProduct(id: String!): Products!
-  files: [Files!]!
+  getProducts: [Products!]!
+  getProduct(id: String!): Products!
+  getFiles: [Files!]!
 }
 
 type Mutation {
@@ -51,10 +54,11 @@ type Mutation {
   deleteCategory(id: String!): Categories!
   createProduct(product: CreateProductInput!): Products!
   updateProduct(updateProductInput: UpdateProductInput!): Products!
-  removeProduct(id: String!): Products!
+  deleteProduct(id: String!): Products!
   uploadFile(file: Upload!): Boolean!
-  createFile(file: CreateFileInput!): Files!
-  removeFile(id: String!): Files!
+  getFile(file: CreateFileInput!): Files!
+  deleteFile(id: String!): Files!
+  deleteFileByProduct(product_id: String!): Files!
 }
 
 input UserCreateDTO {

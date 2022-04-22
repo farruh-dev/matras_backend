@@ -13,22 +13,22 @@ export class ProductsResolver {
     return this.productsService.create(createProductInput);
   }
 
-  @Query(() => [Products], { name: 'getAllProducts' })
+  @Query(() => [Products], { name: 'getProducts' })
   findAll() {
     return this.productsService.findAll();
   }
 
-  @Query(() => Products, { name: 'getOneProduct' })
+  @Query(() => Products, { name: 'getProduct' })
   findOne(@Args('id') id: string) {
     return this.productsService.findOne(id);
   }
 
-  @Mutation(() => Products)
+  @Mutation(() => Products, { name: 'updateProduct' })
   updateProduct(@Args('updateProductInput') updateProductInput: UpdateProductInput) {
     return this.productsService.update(updateProductInput.id, updateProductInput);
   }
 
-  @Mutation(() => Products)
+  @Mutation(() => Products, { name: 'deleteProduct' })
   removeProduct(@Args('id') id: string) {
     return this.productsService.remove(id);
   }

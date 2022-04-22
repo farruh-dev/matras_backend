@@ -21,4 +21,8 @@ export class FilesService {
   async remove(id: string) {
     return this.fileRepository.delete(id);
   }
+
+  async removeByParent(id: string) {
+    return this.fileRepository.delete({product_id: id});
+  }
 }

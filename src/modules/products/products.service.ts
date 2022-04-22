@@ -19,11 +19,15 @@ export class ProductsService {
   }
 
   async findAll() {
-    return this.productRepository.find();
+    return this.productRepository.find({
+      relations: ["images"]
+    });
   }
 
   async findOne(id: string) {
-    return this.productRepository.findOne(id);
+    return this.productRepository.findOne(id, {
+      relations: ["images"]
+    });
   }
 
   async update(id: string, product: UpdateProductInput) {
