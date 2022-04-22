@@ -7,6 +7,7 @@ import { join } from 'path';
 import { UsersModule } from './modules/users/users.module';
 import { CategoriesModule } from './modules/categories/categories.module';
 import { ProductsModule } from './modules/products/products.module';
+import { FilesModule } from './modules/files/files.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { ProductsModule } from './modules/products/products.module';
       {
         driver: ApolloDriver,
         autoSchemaFile: join(process.cwd(), 'src/graphql_schema.gql'),
+        uploads: false
       }
     ),
     TypeOrmModule.forRoot(
@@ -31,7 +33,8 @@ import { ProductsModule } from './modules/products/products.module';
     ),
     UsersModule,
     CategoriesModule,
-    ProductsModule
+    ProductsModule,
+    FilesModule
   ],
   controllers: [],
   providers: [],

@@ -9,7 +9,7 @@ export class ProductsResolver {
   constructor(private readonly productsService: ProductsService) {}
 
   @Mutation(() => Products)
-  createProduct(@Args('createProductInput') createProductInput: CreateProductInput) {
+  createProduct(@Args('product') createProductInput: CreateProductInput) {
     return this.productsService.create(createProductInput);
   }
 

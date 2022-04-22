@@ -6,14 +6,7 @@ type Users {
   id: String!
   username: String!
   password: String!
-  created_at: DateTime!
-  updated_at: DateTime!
 }
-
-"""
-A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
-"""
-scalar DateTime
 
 type Products {
   id: String!
@@ -22,8 +15,6 @@ type Products {
   weight: Int!
   size: String!
   is_available: Boolean!
-  created_at: DateTime!
-  updated_at: DateTime!
   category: Categories!
   category_id: String!
 }
@@ -32,9 +23,16 @@ type Categories {
   id: String!
   name: String!
   parent_id: String
-  created_at: DateTime!
-  updated_at: DateTime!
   products: [Products!]
+}
+
+type Files {
+  id: String!
+  name: String!
+  src: String!
+  size: Int!
+  ext: String!
+  mimetype: String!
 }
 
 type Query {
@@ -43,6 +41,7 @@ type Query {
   getCategory(id: String!): Categories!
   getAllProducts: [Products!]!
   getOneProduct(id: String!): Products!
+  files: [Files!]!
 }
 
 type Mutation {
@@ -50,9 +49,12 @@ type Mutation {
   createCategory(category: CreateCategoryInput!): Categories!
   updateCategory(updateCategoryInput: UpdateCategoryInput!): Categories!
   deleteCategory(id: String!): Categories!
-  createProduct(createProductInput: CreateProductInput!): Products!
+  createProduct(product: CreateProductInput!): Products!
   updateProduct(updateProductInput: UpdateProductInput!): Products!
   removeProduct(id: String!): Products!
+  uploadFile(file: Upload!): Boolean!
+  createFile(file: CreateFileInput!): Files!
+  removeFile(id: String!): Files!
 }
 
 input UserCreateDTO {
@@ -88,4 +90,12 @@ input UpdateProductInput {
   size: String!
   is_available: Boolean!
   category_id: String!
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+
+input CreateFileInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
 }

@@ -17,11 +17,9 @@ export class Users {
     @Column()
     password: string
 
-    @Field()
     @CreateDateColumn()
     created_at: Date
 
-    @Field()
     @UpdateDateColumn()
     updated_at: Date
 }

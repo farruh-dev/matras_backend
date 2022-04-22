@@ -17,11 +17,9 @@ export class Categories {
   @Column({nullable: true})
   parent_id: string;
 
-  @Field()
   @CreateDateColumn()
   created_at: Date
 
-  @Field()
   @UpdateDateColumn()
   updated_at: Date
 

@@ -29,11 +29,9 @@ export class Products {
   @Column("boolean", {default: true})
   is_available: boolean = true
 
-  @Field()
   @CreateDateColumn()
   created_at: Date
 
-  @Field()
   @UpdateDateColumn()
   updated_at: Date
 
