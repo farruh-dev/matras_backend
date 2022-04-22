@@ -8,6 +8,7 @@ import { UsersModule } from './modules/users/users.module';
 import { CategoriesModule } from './modules/categories/categories.module';
 import { ProductsModule } from './modules/products/products.module';
 import { FilesModule } from './modules/files/files.module';
+import { CustomersModule } from './modules/customers/customers.module';
 
 @Module({
   imports: [
@@ -34,7 +35,8 @@ import { FilesModule } from './modules/files/files.module';
     UsersModule,
     CategoriesModule,
     ProductsModule,
-    FilesModule
+    FilesModule,
+    CustomersModule
   ],
   controllers: [],
   providers: [],
